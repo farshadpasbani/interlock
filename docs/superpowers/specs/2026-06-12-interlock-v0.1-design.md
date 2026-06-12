@@ -181,6 +181,14 @@ locally at the harness level (the cross-platform proof in code).
 **v0.3:** Tier-0 auto-merge — opt-in flag; enables GitHub native auto-merge on qualifying
 PRs (requires `contents: write`; gated behind explicit policy setting).
 
+**Post-traction (v0.4+):** constitution template pack — an optional scaffold of the full
+agent-fleet operating manual (the founder's constitution), via `interlock init
+--with-constitution` and/or a companion `interlock-dev/constitution` repo. **Published
+beside the product, never bundled into the core:** Interlock stays the deterministic fuse a
+stranger installs in 10 minutes; the constitution is the philosophy layer believers opt
+into after the gate has earned trust. The constitution also serves as the flagship launch
+content piece (the "governed fleet built this governor" story).
+
 **Explicitly out of scope for v0.x:** hosted services, org-wide policy, dashboards, GitLab/
 Bitbucket, audit exports — that is the paid team layer, gated on the adoption curve.
 
