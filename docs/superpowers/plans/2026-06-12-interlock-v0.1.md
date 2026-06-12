@@ -612,7 +612,7 @@ git add -A && git commit -m "feat(core): author classification and path tiering"
 - Modify: `packages/core/src/classify.ts` (append)
 - Test: `packages/core/test/classify.test.ts` (append)
 
-- [ ] **Step 1: Write the failing tests (append to classify.test.ts)**
+- [x] **Step 1: Write the failing tests (append to classify.test.ts)**
 
 ```ts
 import { classify } from "../src/classify.js";
@@ -700,12 +700,12 @@ describe("classify", () => {
 });
 ```
 
-- [ ] **Step 2: Run tests to verify the new ones fail**
+- [x] **Step 2: Run tests to verify the new ones fail**
 
 Run: `npx vitest run packages/core/test/classify.test.ts`
 Expected: FAIL — `classify` is not exported.
 
-- [ ] **Step 3: Implement (append to classify.ts)**
+- [x] **Step 3: Implement (append to classify.ts)**
 
 ```ts
 import type {
@@ -794,12 +794,12 @@ function buildRequirements(
 
 (Adjust the existing import line at the top of `classify.ts` to include the new types: `import type { AuthorClass, AuthorInfo, ChangedFile, FileVerdict, Tier, Verdict, Violation } from "./types.js";` — one import statement, not two.)
 
-- [ ] **Step 4: Run tests to verify they pass**
+- [x] **Step 4: Run tests to verify they pass**
 
 Run: `npx vitest run packages/core/test/classify.test.ts`
 Expected: all pass.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add -A && git commit -m "feat(core): classify() verdict with violations and requirements"
