@@ -2220,6 +2220,8 @@ git add -A && git commit -m "feat(action): verdict check, sticky comment, tier l
 
 ---
 
+> **Milestone note (adapters complete):** Opus review of 5cfdffb..HEAD → fixes in 4c768a2: (C1) oversize-policy fail-open closed via decodeContentResponse throwing loud; (I1) CLI git errors → exit 2 with hint; (I3) stale approvals revoked via latestApprovers fold; (M3) verdict survives cosmetic-write failures; (M2) copied→modified comment. Suite: 75 tests. Doc duties pushed to T15: README must document author-detection divergence (CLI = git author name, Action = GitHub login) and exit-code contract "1 = blocking violation (stronger than warn)"; spec permissions wording (issues:write, not checks:write) ALREADY correct in workflow snippet — amend spec §Action accordingly.
+
 ### Task 14: Dogfood — Interlock governs its own repo
 
 **Files:**
