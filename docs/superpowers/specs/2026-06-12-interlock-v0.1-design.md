@@ -128,8 +128,8 @@ human-readable message (line/field).
   candidates (`.github/**`, CI configs, the policy file itself), writes `interlock.yml`,
   prints the Action workflow snippet to paste.
 - `check [--base <ref>] [--json]` — classifies the current branch's diff against base.
-  Human-readable verdict table; `--json` for machines. Exit codes: 0 = pass, 1 = violation,
-  2 = config error.
+  Human-readable verdict table; `--json` for machines. Exit codes: 0 = pass or warn-only,
+  1 = blocking violation (stronger than warn), 2 = config/input error.
 - `explain <path>` — prints which rule matches the path, its tier, and why.
 
 ### The GitHub Action — `action/` (`interlock-dev/interlock@v1`)
@@ -143,8 +143,7 @@ human-readable message (line/field).
 - `mode: observe` → check always succeeds (neutral on violations, verdict still visible).
 - `mode: enforce` → check fails on violations; user adds it as a required status check
   (documented one-liner).
-- Permissions requested: `pull-requests: write`, `checks: write`, `contents: read` — read
-  access to code, no merge rights in v0.1.
+- Permissions requested: `pull-requests: write`, `issues: write`, `contents: read` — labels/comments go through the issues API; no `checks: write` needed (the job itself is the check); no merge rights in v0.1.
 
 ## Failure semantics — fails like a safety device
 
