@@ -1,5 +1,6 @@
 import { execFileSync } from "node:child_process";
 import type { AuthorInfo, ChangedFile } from "@interlock-dev/core";
+import { extractTrailers } from "@interlock-dev/core";
 
 export type Exec = (cmd: string, args: string[]) => string;
 
@@ -32,18 +33,11 @@ export function getChangedFiles(base: string, exec: Exec = defaultExec): Changed
   );
 }
 
-const TRAILER_RE = /^[A-Za-z][A-Za-z-]*:\s.+/;
-
 export function getAuthorInfo(base: string, exec: Exec = defaultExec): AuthorInfo {
   const branch = exec("git", ["rev-parse", "--abbrev-ref", "HEAD"]).trim();
   const account = exec("git", ["log", "-1", "--format=%an"]).trim() || "unknown";
   const bodies = exec("git", ["log", `${base}...HEAD`, "--format=%B%x00"]);
-  const trailers: string[] = [];
-  for (const body of bodies.split("\0")) {
-    for (const raw of body.split("\n")) {
-      const line = raw.trim();
-      if (TRAILER_RE.test(line)) trailers.push(line);
-    }
-  }
+  const messages = bodies.split("\0").filter((b) => b.trim().length > 0);
+  const trailers = extractTrailers(messages);
   return { account, branch, trailers };
 }

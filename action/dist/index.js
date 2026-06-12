@@ -37173,6 +37173,23 @@ function gate(verdict, ctx = {}) {
   return { shouldFail: reasons.length > 0, reasons };
 }
 
+// ../packages/core/dist/trailers.js
+var TRAILER_RE = /^[A-Za-z][A-Za-z-]*:\s.+/;
+function extractTrailers(commitMessages) {
+  const trailers = [];
+  for (const message of commitMessages) {
+    const paragraphs = message.split(/\n\s*\n/).map((p) => p.trim()).filter((p) => p.length > 0);
+    if (paragraphs.length < 2)
+      continue;
+    const last = paragraphs[paragraphs.length - 1];
+    const lines = last.split("\n").map((l) => l.trim()).filter(Boolean);
+    if (lines.every((l) => TRAILER_RE.test(l))) {
+      trailers.push(...lines);
+    }
+  }
+  return trailers;
+}
+
 // src/helpers.ts
 var MARKER = "<!-- interlock-verdict -->";
 function mapFiles(apiFiles) {
@@ -37187,20 +37204,6 @@ function mapFiles(apiFiles) {
     const status = f.status === "added" || f.status === "removed" ? f.status : "modified";
     return { path: f.filename, status };
   });
-}
-var TRAILER_RE = /^[A-Za-z][A-Za-z-]*:\s.+/;
-function extractTrailers(commitMessages) {
-  const trailers = [];
-  for (const message of commitMessages) {
-    const paragraphs = message.split(/\n\n+/);
-    if (paragraphs.length < 2) continue;
-    const lastParagraph = paragraphs[paragraphs.length - 1];
-    for (const raw of lastParagraph.split("\n")) {
-      const line = raw.trim();
-      if (TRAILER_RE.test(line)) trailers.push(line);
-    }
-  }
-  return trailers;
 }
 function buildComment(verdict, gating) {
   const icon = gating.shouldFail ? "\u274C" : verdict.tier === 2 ? "\u26A0\uFE0F" : "\u2705";

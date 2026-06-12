@@ -38,5 +38,6 @@ describe("getAuthorInfo", () => {
     expect(author.trailers).toContain(
       "Co-Authored-By: Claude <noreply@anthropic.com>"
     );
+    expect(author.trailers).not.toContain("feat: thing");
   });
 });

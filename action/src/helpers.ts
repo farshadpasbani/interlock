@@ -1,5 +1,6 @@
 import type { ChangedFile, Verdict } from "@interlock-dev/core";
 import type { GatingResult } from "@interlock-dev/core";
+import { extractTrailers } from "@interlock-dev/core";
 
 export const MARKER = "<!-- interlock-verdict -->";
 
@@ -26,24 +27,7 @@ export function mapFiles(apiFiles: ApiFile[]): ChangedFile[] {
   });
 }
 
-const TRAILER_RE = /^[A-Za-z][A-Za-z-]*:\s.+/;
-
-export function extractTrailers(commitMessages: string[]): string[] {
-  const trailers: string[] = [];
-  for (const message of commitMessages) {
-    // Git trailers live in the last paragraph (after the final blank line).
-    // Split on double-newline and take the last block; if it's one block
-    // (no blank line), there are no trailers.
-    const paragraphs = message.split(/\n\n+/);
-    if (paragraphs.length < 2) continue;
-    const lastParagraph = paragraphs[paragraphs.length - 1]!;
-    for (const raw of lastParagraph.split("\n")) {
-      const line = raw.trim();
-      if (TRAILER_RE.test(line)) trailers.push(line);
-    }
-  }
-  return trailers;
-}
+export { extractTrailers };
 
 export function buildComment(verdict: Verdict, gating: GatingResult): string {
   const icon = gating.shouldFail ? "❌" : verdict.tier === 2 ? "⚠️" : "✅";
