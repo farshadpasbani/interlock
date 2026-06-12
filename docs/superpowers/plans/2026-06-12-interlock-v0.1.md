@@ -2227,7 +2227,7 @@ git add -A && git commit -m "feat(action): verdict check, sticky comment, tier l
 **Files:**
 - Create: `interlock.yml` (repo root), `.github/workflows/interlock.yml`
 
-- [ ] **Step 1: Generate our own policy with our own tool**
+- [x] **Step 1: Generate our own policy with our own tool**
 
 Run: `node packages/cli/dist/index.js init`
 Expected: `interlock.yml` written; snippet printed.
@@ -2240,7 +2240,7 @@ Then edit the generated `interlock.yml` tier2 list to also protect the engine's 
     - "action/dist/**"
 ```
 
-- [ ] **Step 2: Add the workflow**
+- [x] **Step 2: Add the workflow**
 
 Write `.github/workflows/interlock.yml` with exactly the printed snippet, except the action reference uses the local path until the org repo exists:
 
@@ -2263,7 +2263,7 @@ jobs:
 
 (`uses: ./action` requires checkout; the published `interlock-dev/interlock@v1` form does not. Swap at launch.)
 
-- [ ] **Step 3: Sanity-check our own verdict locally, commit**
+- [x] **Step 3: Sanity-check our own verdict locally, commit**
 
 Run: `node packages/cli/dist/index.js explain interlock.yml`
 Expected: `interlock.yml → Tier 2 (rule: interlock.yml)`.
@@ -2282,7 +2282,7 @@ git add -A && git commit -m "chore: dogfood — interlock governs its own reposi
 **Files:**
 - Create: `README.md`, `LICENSE`
 
-- [ ] **Step 1: Write README.md**
+- [x] **Step 1: Write README.md**
 
 Structure (write actual prose, not placeholders):
 
@@ -2297,12 +2297,12 @@ Structure (write actual prose, not placeholders):
 
 `LICENSE`: the standard Apache-2.0 text, copyright 2026 Farshad Pasbani.
 
-- [ ] **Step 2: Final full gate**
+- [x] **Step 2: Final full gate**
 
 Run: `npx vitest run && npx tsc -b packages/core packages/cli && npx tsc -p action && npm run build -w action`
 Expected: everything green, bundle reproducible (git diff on `action/dist` is empty or committed).
 
-- [ ] **Step 3: Commit**
+- [x] **Step 3: Commit**
 
 ```bash
 git add -A && git commit -m "docs: README with the 10-minute adoption path; Apache-2.0 LICENSE"
