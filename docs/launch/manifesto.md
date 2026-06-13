@@ -5,7 +5,7 @@ Lead with this; the tool is the call to action at the end.*
 
 ---
 
-For the last few months I've let AI agents write code and open pull requests against my
+Over the last few days I've let AI agents write code and open pull requests against my
 repositories while I sleep. Not as a demo — as my actual workflow. The thing that made that
 safe enough to do wasn't a smarter model or a cleverer prompt. It was a written
 **constitution**: a charter that defines what the agents may do on their own, what always
@@ -109,7 +109,7 @@ very change that installed it.
 
 The governor, governing its own birth. I can't think of a cleaner test.
 
-## Try it, then tell me where I'm wrong
+## Try it
 
 Interlock is v0.1, Apache-2.0, GitHub-Actions-only for now, and it runs entirely on your own
 CI — nothing hosted, nothing touching your code.
@@ -122,11 +122,6 @@ That writes the policy and prints the workflow to paste. About a minute, start t
 The constitution it came from is in the repo; the tool is the first organ of it made
 enforceable, and there will be more — a local pre-commit/Claude Code adapter next, so the
 same policy holds before a PR even exists.
-
-I'm not claiming this is finished thinking. I'm claiming it's a better frame than "supervise
-harder," and that the frame produces tools you can actually install today. If you run
-agents, I'd genuinely like to know two things: which paths in your repos you'd never let one
-touch — and what it would take for you to trust a fuse like this with the keys.
 
 - **Tool:** https://github.com/interlock-dev/interlock
 - **The constitution:** https://github.com/interlock-dev/interlock/blob/main/docs/agents/CONSTITUTION.md
