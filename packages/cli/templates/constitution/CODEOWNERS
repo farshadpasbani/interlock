@@ -1,0 +1,20 @@
+# CODEOWNERS — the cortex (Constitution Article II). The sovereign is listed here.
+# A required CODEOWNERS review is the gate on Tier-2 / germline (Art. III, X).
+# Tier-1 human approval was waived by the solo sovereign at genesis (Art. III).
+
+# Germline — the charter, the dials, the controller (+ adapters), the gates, and this file
+# itself (Article X). Protected whichever agent harness reads them.
+/docs/agents/CONSTITUTION.md   @{{OWNER_HANDLE}}
+/docs/agents/loop-policy.md    @{{OWNER_HANDLE}}
+/docs/agents/master-loop.md    @{{OWNER_HANDLE}}
+/.claude/skills/master-loop/   @{{OWNER_HANDLE}}
+/.cursor/rules/master-loop.mdc @{{OWNER_HANDLE}}
+/.github/workflows/            @{{OWNER_HANDLE}}
+/.github/CODEOWNERS            @{{OWNER_HANDLE}}
+
+# Semantic authority — decisions of record and the domain glossary (Article XI).
+/docs/adr/                     @{{OWNER_HANDLE}}
+/CONTEXT.md                    @{{OWNER_HANDLE}}
+
+# Add domain-critical paths here as they land — critical integrations, the core algorithms an
+# engineer relies on, credential/licence handling — per docs/agents/loop-policy.md §2.
