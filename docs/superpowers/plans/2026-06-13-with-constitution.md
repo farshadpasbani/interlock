@@ -759,7 +759,7 @@ git commit -m "feat(cli): render — stack-aware ci.yml + thin CLAUDE.md"
 - Create: `packages/cli/src/commands/constitution.ts`
 - Test: `packages/cli/test/constitution-scaffold.test.ts`
 
-- [ ] **Step 1: Write the failing tests**
+- [x] **Step 1: Write the failing tests**
 
 `packages/cli/test/constitution-scaffold.test.ts`:
 
@@ -839,12 +839,12 @@ Replace the brittle `.catch?.` line with:
     expect(grep).toBe("");
 ```
 
-- [ ] **Step 2: Run to verify fail**
+- [x] **Step 2: Run to verify fail**
 
 Run: `npx vitest run packages/cli/test/constitution-scaffold.test.ts`
 Expected: FAIL — cannot find module `../src/commands/constitution.js`.
 
-- [ ] **Step 3: Implement**
+- [x] **Step 3: Implement**
 
 `packages/cli/src/commands/constitution.ts`:
 
@@ -921,7 +921,7 @@ export function scaffoldConstitution(opts: ScaffoldOptions, io: ScaffoldIo): num
 (Remove the unused `getAuthorInfo`/`defaultExec` import line if your linter flags it — the
 per-call `exec` closure over `opts.cwd` is what's used.)
 
-- [ ] **Step 4: Run to verify pass, commit**
+- [x] **Step 4: Run to verify pass, commit**
 
 Run: `npx vitest run packages/cli/test/constitution-scaffold.test.ts`
 Expected: all pass (requires `npm run build -w packages/cli` first so `templates.generated.ts` exists — run `node packages/cli/scripts/embed-templates.mjs` if needed).
