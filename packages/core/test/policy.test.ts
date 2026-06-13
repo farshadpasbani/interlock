@@ -47,8 +47,10 @@ describe("parsePolicy", () => {
     expect(() => parsePolicy("")).toThrow(PolicyError);
   });
 
-  it("rejects an unsupported version", () => {
+  it("rejects an unsupported version with the custom message", () => {
     expect(() => parsePolicy("version: 2")).toThrow(/version/);
+    // the zod v4 `error` param must still surface our custom copy
+    expect(() => parsePolicy("version: 2")).toThrow(/only version: 1 is supported/);
   });
 
   it("rejects unknown keys (catches typos)", () => {
