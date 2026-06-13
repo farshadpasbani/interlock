@@ -173,7 +173,7 @@ git commit -m "chore(cli): vendor solo-form constitution template (placeholders 
 - Modify: `.gitignore` (ignore the generated module)
 - Test: `packages/cli/test/constitution-embed.test.ts`
 
-- [ ] **Step 1: Write the embed script**
+- [x] **Step 1: Write the embed script**
 
 `packages/cli/scripts/embed-templates.mjs`:
 
@@ -214,12 +214,12 @@ writeFileSync(
 console.log(`embedded ${files.length} template files → src/templates.generated.ts`);
 ```
 
-- [ ] **Step 2: Generate it and verify**
+- [x] **Step 2: Generate it and verify**
 
 Run: `node packages/cli/scripts/embed-templates.mjs`
 Expected: `embedded 14 template files → src/templates.generated.ts`, and the file exists.
 
-- [ ] **Step 3: Wire build + ignore the generated file**
+- [x] **Step 3: Wire build + ignore the generated file**
 
 In `packages/cli/package.json`, change `build` and add `prepublishOnly` so the embed runs first:
 
@@ -236,7 +236,7 @@ In root `.gitignore`, add a line:
 packages/cli/src/templates.generated.ts
 ```
 
-- [ ] **Step 4: Write the test (the generated module is loadable and complete)**
+- [x] **Step 4: Write the test (the generated module is loadable and complete)**
 
 `packages/cli/test/constitution-embed.test.ts`:
 
@@ -265,7 +265,7 @@ describe("embedded templates", () => {
 });
 ```
 
-- [ ] **Step 5: Run + commit**
+- [x] **Step 5: Run + commit**
 
 Run: `npx vitest run packages/cli/test/constitution-embed.test.ts`
 Expected: 2 pass.
