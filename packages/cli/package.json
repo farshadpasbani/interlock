@@ -10,10 +10,25 @@
   },
   "homepage": "https://github.com/interlock-dev/interlock#readme",
   "bugs": "https://github.com/interlock-dev/interlock/issues",
-  "keywords": ["ai-agents", "governance", "code-review", "github-actions", "guardrails", "claude-code", "codex", "ci"],
-  "bin": { "agent-interlock": "./dist/index.js" },
-  "files": ["dist"],
-  "engines": { "node": ">=20" },
+  "keywords": [
+    "ai-agents",
+    "governance",
+    "code-review",
+    "github-actions",
+    "guardrails",
+    "claude-code",
+    "codex",
+    "ci"
+  ],
+  "bin": {
+    "agent-interlock": "dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "build": "esbuild src/index.ts --bundle --platform=node --target=node20 --format=cjs --outfile=dist/index.js",
     "prepublishOnly": "npm run build"
