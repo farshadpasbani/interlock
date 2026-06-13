@@ -7,7 +7,7 @@
     "build": "esbuild src/main.ts --bundle --platform=node --target=node20 --format=cjs --outfile=dist/index.cjs"
   },
   "dependencies": {
-    "@actions/core": "^1.11.0",
+    "@actions/core": "^3.0.1",
     "@actions/github": "^6.0.0",
     "interlock-core": "0.1.0"
   },
