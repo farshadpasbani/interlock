@@ -17,10 +17,13 @@ export interface ScaffoldIo {
 }
 
 export function scaffoldConstitution(opts: ScaffoldOptions, io: ScaffoldIo): number {
-  const guard = join(opts.cwd, "docs/agents/CONSTITUTION.md");
-  if (existsSync(guard) && !opts.force) {
-    io.error("docs/agents/CONSTITUTION.md already exists — this repo already has a constitution. Re-run with --force to overwrite.");
-    return 2;
+  const targets = [...Object.values(OUTPUT_MAP), ".github/workflows/ci.yml", "CLAUDE.md"];
+  if (!opts.force) {
+    const conflict = targets.find((rel) => existsSync(join(opts.cwd, rel)));
+    if (conflict) {
+      io.error(`${conflict} already exists — re-run with --force to overwrite.`);
+      return 2;
+    }
   }
 
   const exec = (cmd: string, args: string[]): string =>

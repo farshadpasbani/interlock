@@ -62,6 +62,16 @@ describe("scaffoldConstitution", () => {
     expect(text).toMatch(/branch protection/i);
     expect(text).toMatch(/gh label create|labels/i);
   });
+
+  it("refuses if a pre-existing target (e.g. CLAUDE.md) would be clobbered", () => {
+    const d = gitRepo();
+    writeFileSync(join(d, "CLAUDE.md"), "my hand-written instructions\n");
+    const err: string[] = [];
+    const code = scaffoldConstitution({ cwd: d, force: false }, { log: () => {}, error: (s) => err.push(s) });
+    expect(code).toBe(2);
+    expect(err.join("\n")).toContain("CLAUDE.md");
+    expect(readFileSync(join(d, "CLAUDE.md"), "utf8")).toContain("hand-written"); // untouched
+  });
 });
 
 describe("init --with-constitution (end to end)", () => {

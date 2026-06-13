@@ -52,7 +52,7 @@ export interface StackCommands {
   detected: boolean;
 }
 
-const TODO = "echo 'TODO: set this command' && false";
+const TODO = "echo 'TODO set this command' && false";
 
 export function detectStack(cwd: string): StackCommands {
   const ciName = "checks";

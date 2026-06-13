@@ -13,7 +13,12 @@ const stack: StackCommands = {
 describe("germlinePaths", () => {
   it("is the fixed protected set", () => {
     expect(germlinePaths()).toEqual([
-      "docs/agents/**", ".github/workflows/**", ".github/CODEOWNERS", "interlock.yml",
+      "docs/agents/**",
+      ".github/workflows/**",
+      ".github/CODEOWNERS",
+      ".claude/skills/master-loop/**",
+      ".cursor/rules/master-loop.mdc",
+      "interlock.yml",
     ]);
   });
 });
@@ -72,5 +77,25 @@ describe("buildClaudeMd", () => {
     const md = buildClaudeMd();
     expect(md).toContain("@AGENTS.md");
     expect(md).toContain(".claude/skills/master-loop");
+  });
+});
+
+describe("buildCi no-stack safety", () => {
+  it("emits run values with no colon-space that would break YAML", () => {
+    const noStack = {
+      install: "echo 'TODO set this command' && false",
+      test: "echo 'TODO set this command' && false",
+      lint: "echo 'TODO set this command' && false",
+      typecheck: "echo 'TODO set this command' && false",
+      format: "echo 'TODO set this command' && false",
+      run: "echo 'TODO set this command' && false",
+      ciName: "checks", detected: false,
+    };
+    const yml = buildCi(noStack);
+    for (const line of yml.split("\n").filter((l) => l.includes("- run:"))) {
+      // the value after "run:" must not itself contain ": " (colon-space)
+      const value = line.split("- run:")[1] ?? "";
+      expect(value.includes(": "), line).toBe(false);
+    }
   });
 });

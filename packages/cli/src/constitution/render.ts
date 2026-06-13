@@ -1,7 +1,14 @@
 import type { RepoInfo, StackCommands } from "./detect.js";
 
 export function germlinePaths(): string[] {
-  return ["docs/agents/**", ".github/workflows/**", ".github/CODEOWNERS", "interlock.yml"];
+  return [
+    "docs/agents/**",
+    ".github/workflows/**",
+    ".github/CODEOWNERS",
+    ".claude/skills/master-loop/**",
+    ".cursor/rules/master-loop.mdc",
+    "interlock.yml",
+  ];
 }
 
 export function buildValues(repo: RepoInfo, stack: StackCommands): Record<string, string> {
