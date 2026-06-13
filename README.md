@@ -28,7 +28,6 @@ Two steps — `init`, then paste — and you're done. Everything after is the ga
    permissions:
      contents: read
      pull-requests: write
-     issues: write
    jobs:
      interlock:
        runs-on: ubuntu-latest
@@ -54,6 +53,16 @@ A few invariants worth knowing:
 - **Renames count on both paths.** Moving a file out of a protected directory is not an escape hatch.
 - **The policy is always read from the PR's base branch.** A PR cannot weaken the rule that judges it.
 - **`interlock.yml` protects itself by default.** The gate cannot edit its own off-switch — it is a Tier 2 path in the generated policy.
+
+## What it is — and what it isn't
+
+Interlock is a **governance aid that makes agent-PR review legible** — not a **security containment boundary**. It governs *cooperating* agents (ones you've configured to identify themselves), and its verdict is only as strong as three assumptions:
+
+- **Agent identity is an allowlist, and it fails to "human."** A PR counts as agent-authored only if its account, head branch, or a commit trailer matches your `authors.agents` patterns. An agent that doesn't announce itself is classified human and gets the lenient tier.
+- **`observe` is the default — nothing blocks until you flip `enforce`** and add `interlock` as a required status check.
+- **Only the paths you list are protected**, matched case-sensitively.
+
+Treat the verdict as a deterministic signal to a human, not as a wall — pair it with branch protection and required reviews. Full threat model: [SECURITY.md](SECURITY.md).
 
 ## Policy reference
 
