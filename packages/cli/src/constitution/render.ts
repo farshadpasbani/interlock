@@ -31,6 +31,40 @@ export function fillPlaceholders(text: string, values: Record<string, string>): 
   );
 }
 
+export function buildCi(stack: StackCommands): string {
+  const real = (c: string) => c && !c.trim().startsWith("#");
+  const steps: string[] = [`      - run: ${stack.install}`];
+  if (real(stack.typecheck)) steps.push(`      - run: ${stack.typecheck}`);
+  if (real(stack.test)) steps.push(`      - run: ${stack.test}`);
+  const node =
+    stack.install.startsWith("npm")
+      ? "      - uses: actions/setup-node@v4\n        with:\n          node-version: 20\n          cache: npm\n"
+      : "";
+  return `name: CI
+on:
+  pull_request:
+  push:
+    branches: [main]
+jobs:
+  ${stack.ciName}:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+${node}${steps.join("\n")}
+`;
+}
+
+export function buildClaudeMd(): string {
+  return `@AGENTS.md
+
+# Claude Code binding
+
+This repo is governed by the agent Constitution (docs/agents/CONSTITUTION.md). The
+master-loop controller binding for Claude Code lives at .claude/skills/master-loop/SKILL.md —
+run /master-loop to operate the fleet. Status: shadow (see docs/agents/loop-policy.md).
+`;
+}
+
 /** Template relative-path → repo-relative output path. */
 export const OUTPUT_MAP: Record<string, string> = {
   "CONSTITUTION.md": "docs/agents/CONSTITUTION.md",

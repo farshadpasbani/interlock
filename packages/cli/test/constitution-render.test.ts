@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
-  buildValues, fillPlaceholders, germlinePaths, OUTPUT_MAP,
+  buildCi, buildClaudeMd, buildValues, fillPlaceholders, germlinePaths, OUTPUT_MAP,
 } from "../src/constitution/render.js";
 import type { RepoInfo, StackCommands } from "../src/constitution/detect.js";
 
@@ -49,5 +49,28 @@ describe("OUTPUT_MAP", () => {
     expect(OUTPUT_MAP["field-guide.md"]).toBe("docs/agents/README.md");
     expect(OUTPUT_MAP["CODEOWNERS"]).toBe(".github/CODEOWNERS");
     expect(OUTPUT_MAP["adapters/claude-SKILL.md"]).toBe(".claude/skills/master-loop/SKILL.md");
+  });
+});
+
+describe("buildCi", () => {
+  it("generates a checks job running install/typecheck/test", () => {
+    const yml = buildCi(stack);
+    expect(yml).toContain("name: CI");
+    expect(yml).toContain("checks:");
+    expect(yml).toContain("npm install");
+    expect(yml).toContain("npm run typecheck");
+    expect(yml).toContain("npm test");
+  });
+  it("skips comment-only commands", () => {
+    const yml = buildCi({ ...stack, typecheck: "# none" });
+    expect(yml).not.toContain("# none");
+  });
+});
+
+describe("buildClaudeMd", () => {
+  it("points at AGENTS.md and the master-loop", () => {
+    const md = buildClaudeMd();
+    expect(md).toContain("@AGENTS.md");
+    expect(md).toContain(".claude/skills/master-loop");
   });
 });
