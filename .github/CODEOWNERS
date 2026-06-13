@@ -1,0 +1,25 @@
+# CODEOWNERS — the cortex (Constitution Article II). The sovereign is the sole human listed here.
+# Add teammates as they join; every protected path needs at least one owner. A required
+# CODEOWNERS review is the gate on Tier-2 / germline changes.
+
+# Germline — the charter, the dials, the controller (+ adapters), the gates, and this file
+# itself (Article X). Protected whichever agent harness reads them.
+/docs/agents/CONSTITUTION.md   @farshadpasbani
+/docs/agents/loop-policy.md    @farshadpasbani
+/docs/agents/master-loop.md    @farshadpasbani
+/.claude/skills/master-loop/   @farshadpasbani
+/.cursor/rules/master-loop.mdc @farshadpasbani
+/.github/workflows/            @farshadpasbani
+/.github/CODEOWNERS            @farshadpasbani
+
+# Semantic authority — decisions of record and the domain glossary (Article XI).
+/docs/adr/                     @farshadpasbani
+/CONTEXT.md                    @farshadpasbani
+
+# Domain-critical paths — the product's core engine and gate configuration.
+# This list mirrors loop-policy.md §2; keep them in sync.
+/interlock.yml                 @farshadpasbani
+/packages/core/src/policy.ts   @farshadpasbani
+/packages/core/src/gating.ts   @farshadpasbani
+/packages/core/src/classify.ts @farshadpasbani
+/action/dist/                  @farshadpasbani

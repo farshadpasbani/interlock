@@ -1,0 +1,25 @@
+---
+description: Master Loop controller — Cursor adapter for the harness-neutral autonomous-development brain stem
+alwaysApply: false
+---
+
+# Master Loop — Cursor adapter
+
+This is the **Cursor binding** of a harness-neutral controller. The full operating procedure is
+the single source of truth at **`docs/agents/master-loop.md`** — read it and follow it exactly;
+it is identical for every harness. This rule only binds the three neutral verbs to Cursor
+primitives.
+
+When asked to "run the master loop" / "work the fleet":
+
+- First read `docs/agents/CONSTITUTION.md`, `docs/agents/loop-policy.md`, and
+  `docs/agents/master-loop.md`. Obey the law there.
+- **Spawn a worker / fix worker** → launch a Cursor background agent with the self-contained
+  brief from `master-loop.md`. Group by file surface; one worker per surface.
+- **Dual review (Tier 1)** → two background agents, a correctness lens and a structural lens.
+- **Schedule the next cycle** → a Cursor scheduled/looped run, or an external `cron` that
+  re-invokes the controller. Pace by state (red main / PRs in flight → soon; idle → long).
+
+Everything else — the cycle ladder, tier evaluation, shadow-mode rules, the journal, the
+prohibitions — is harness-neutral and lives in `docs/agents/master-loop.md`. Do not paraphrase
+it here; read it live. If this rule and `master-loop.md` ever disagree, `master-loop.md` wins.
