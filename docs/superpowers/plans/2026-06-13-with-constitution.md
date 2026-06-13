@@ -285,7 +285,7 @@ git commit -m "build(cli): embed constitution templates into the bundle at build
 - Create: `packages/cli/src/constitution/detect.ts`
 - Test: `packages/cli/test/constitution-detect.test.ts`
 
-- [ ] **Step 1: Write the failing tests**
+- [x] **Step 1: Write the failing tests**
 
 `packages/cli/test/constitution-detect.test.ts`:
 
@@ -330,12 +330,12 @@ describe("detectRepo", () => {
 });
 ```
 
-- [ ] **Step 2: Run to verify fail**
+- [x] **Step 2: Run to verify fail**
 
 Run: `npx vitest run packages/cli/test/constitution-detect.test.ts`
 Expected: FAIL — cannot find module `../src/constitution/detect.js`.
 
-- [ ] **Step 3: Implement (part 1)**
+- [x] **Step 3: Implement (part 1)**
 
 `packages/cli/src/constitution/detect.ts`:
 
@@ -385,12 +385,12 @@ export function detectRepo(cwd: string, exec: Exec): RepoInfo {
 }
 ```
 
-- [ ] **Step 4: Run to verify pass**
+- [x] **Step 4: Run to verify pass**
 
 Run: `npx vitest run packages/cli/test/constitution-detect.test.ts`
 Expected: parseRemote + detectRepo tests pass.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add packages/cli/src/constitution/detect.ts packages/cli/test/constitution-detect.test.ts
@@ -405,7 +405,7 @@ git commit -m "feat(cli): detectRepo + parseRemote for constitution scaffold"
 - Modify: `packages/cli/src/constitution/detect.ts` (append)
 - Test: `packages/cli/test/constitution-detect.test.ts` (append)
 
-- [ ] **Step 1: Append failing tests**
+- [x] **Step 1: Append failing tests**
 
 ```ts
 import { detectStack } from "../src/constitution/detect.js";
@@ -446,12 +446,12 @@ describe("detectStack", () => {
 });
 ```
 
-- [ ] **Step 2: Run to verify fail**
+- [x] **Step 2: Run to verify fail**
 
 Run: `npx vitest run packages/cli/test/constitution-detect.test.ts`
 Expected: FAIL — `detectStack` is not exported.
 
-- [ ] **Step 3: Implement (append to detect.ts)**
+- [x] **Step 3: Implement (append to detect.ts)**
 
 ```ts
 export interface StackCommands {
@@ -509,7 +509,7 @@ export function detectStack(cwd: string): StackCommands {
 }
 ```
 
-- [ ] **Step 4: Run to verify pass, commit**
+- [x] **Step 4: Run to verify pass, commit**
 
 Run: `npx vitest run packages/cli/test/constitution-detect.test.ts`
 Expected: all pass.
