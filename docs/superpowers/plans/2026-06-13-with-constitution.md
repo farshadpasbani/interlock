@@ -1037,7 +1037,7 @@ git commit -m "feat(cli): init --with-constitution flag; germline-synced interlo
 **Files:**
 - Modify: `packages/cli/test/constitution-scaffold.test.ts` (append)
 
-- [ ] **Step 1: Append the integration test**
+- [x] **Step 1: Append the integration test**
 
 ```ts
 import { runInit } from "../src/commands/init.js";
@@ -1071,12 +1071,12 @@ describe("init --with-constitution (end to end)", () => {
 });
 ```
 
-- [ ] **Step 2: Run to verify pass**
+- [x] **Step 2: Run to verify pass**
 
 Run: `npx vitest run packages/cli/test/constitution-scaffold.test.ts`
 Expected: all pass.
 
-- [ ] **Step 3: Commit**
+- [x] **Step 3: Commit**
 
 ```bash
 git add packages/cli/test/constitution-scaffold.test.ts
