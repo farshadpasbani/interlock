@@ -1,4 +1,4 @@
-name: "Interlock"
+name: "Agent Interlock"
 description: "Tool-neutral governance gate for AI-agent PRs: protected paths + reversibility-tiered merge rules from one interlock.yml."
 author: "interlock-dev"
 branding:
