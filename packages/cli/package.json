@@ -30,7 +30,7 @@
     "node": ">=20"
   },
   "scripts": {
-    "build": "esbuild src/index.ts --bundle --platform=node --target=node20 --format=cjs --outfile=dist/index.js",
+    "build": "node scripts/embed-templates.mjs && esbuild src/index.ts --bundle --platform=node --target=node20 --format=cjs --outfile=dist/index.js",
     "prepublishOnly": "npm run build"
   },
   "devDependencies": {
