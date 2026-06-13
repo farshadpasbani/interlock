@@ -56,7 +56,7 @@ This is a content task, not logic. The source is the canonical template on this 
 (same wording we want, but with values filled in — use them only to copy the *solo clause
 wording*, never their filled-in values or interlock-specific paths).
 
-- [ ] **Step 1: Copy the 14 template files verbatim**
+- [x] **Step 1: Copy the 14 template files verbatim**
 
 ```bash
 cd /Users/farshad/projects/interlock
@@ -73,7 +73,7 @@ cp ~/.claude/constitution/adapters/cursor-master-loop.mdc packages/cli/templates
 Do NOT copy `pacemaker/`, `.git/`, `README.md`, `cursor-user-rules.md`, or `ci-templates/`
 (CI is generated, not templated).
 
-- [ ] **Step 2: Apply the solo adaptation to CONSTITUTION.md**
+- [x] **Step 2: Apply the solo adaptation to CONSTITUTION.md**
 
 In `packages/cli/templates/constitution/CONSTITUTION.md`, the canonical Tier-1 clause
 (Article III) is team-default. Replace it with the solo wording. Find:
@@ -93,7 +93,7 @@ Replace with:
   sovereign at genesis; it can be reinstated by amendment (Article X) at any time.
 ```
 
-- [ ] **Step 3: Apply the solo adaptation to loop-policy.md (Tier-1 + the germline-globs placeholder)**
+- [x] **Step 3: Apply the solo adaptation to loop-policy.md (Tier-1 + the germline-globs placeholder)**
 
 (a) The Tier-1 heading/body in `loop-policy.md` §2 is team-default. Find the canonical Tier-1
 section header line:
@@ -127,7 +127,7 @@ Leave the "Germline path globs (present from day one)" list above it as-is (thos
 controller's own files: CONSTITUTION.md, loop-policy.md, master-loop.md, adapters, workflows,
 CODEOWNERS).
 
-- [ ] **Step 4: Apply the solo adaptation to master-loop.md and field-guide.md**
+- [x] **Step 4: Apply the solo adaptation to master-loop.md and field-guide.md**
 
 In both files, the Tier-1 merge rule appears in a table row / tier list. Make the Tier-1
 condition read "green CI + both review agents clean" with no human-approval requirement
@@ -141,7 +141,7 @@ condition read "green CI + both review agents clean" with no human-approval requ
 Use the repo's `docs/agents/master-loop.md` and `docs/agents/README.md` as the reference for the
 exact solo phrasing — copy the *wording* of the Tier-1 cells, not their filled values.
 
-- [ ] **Step 5: Verify placeholders intact and team wording gone**
+- [x] **Step 5: Verify placeholders intact and team wording gone**
 
 ```bash
 cd /Users/farshad/projects/interlock
@@ -156,7 +156,7 @@ Expected: no `counter-sign` matches; the placeholder set lists `{{OWNER}} {{REPO
 {{FORMAT_CMD}} {{RUN_CMD}} {{CI_CHECK_NAME}} {{GERMLINE_GLOBS}}`; the GERMLINE_GLOBS line is
 present in loop-policy.md.
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add packages/cli/templates/constitution
