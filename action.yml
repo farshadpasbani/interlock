@@ -1,0 +1,16 @@
+name: "Interlock"
+description: "Tool-neutral governance gate for AI-agent PRs: protected paths + reversibility-tiered merge rules from one interlock.yml."
+author: "interlock-dev"
+branding:
+  icon: "shield"
+  color: "gray-dark"
+inputs:
+  github-token:
+    description: "Token used to read files and post the verdict (defaults to the workflow token)."
+    default: "${{ github.token }}"
+  policy-path:
+    description: "Path to the policy file, read from the PR base branch."
+    default: "interlock.yml"
+runs:
+  using: "node20"
+  main: "action/dist/index.js"
