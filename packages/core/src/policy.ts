@@ -19,29 +19,29 @@ const agentsSchema = z
     trailers: globList,
   })
   .strict()
-  .default({});
+  .prefault({});
 
 export const policySchema = z
   .object({
     version: z.literal(1, {
-      errorMap: () => ({ message: "only version: 1 is supported" }),
+      error: "only version: 1 is supported",
     }),
     mode: z.enum(["observe", "enforce"]).default("observe"),
-    authors: z.object({ agents: agentsSchema }).strict().default({}),
+    authors: z.object({ agents: agentsSchema }).strict().prefault({}),
     tiers: z
       .object({
         tier0: globList,
         tier2: globList,
       })
       .strict()
-      .default({}),
+      .prefault({}),
     rules: z
       .object({
         "agent-on-tier2": z.enum(["block", "warn"]).default("block"),
         "human-on-tier2": z.enum(["warn", "require-review"]).default("warn"),
       })
       .strict()
-      .default({}),
+      .prefault({}),
   })
   .strict();
 
