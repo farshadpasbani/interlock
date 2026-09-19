@@ -12,6 +12,6 @@
     "interlock-core": "0.1.0"
   },
   "devDependencies": {
-    "esbuild": "^0.28.1"
+    "esbuild": "^0.28.2"
   }
 }

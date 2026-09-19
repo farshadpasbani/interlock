@@ -11,9 +11,9 @@
   },
   "scripts": { "build": "tsc -p ." },
   "dependencies": {
-    "picomatch": "^4.0.0",
-    "yaml": "^2.4.0",
-    "zod": "^4.4.3"
+    "picomatch": "^4.0.7",
+    "yaml": "^2.9.1",
+    "zod": "^4.6.5"
   },
-  "devDependencies": { "@types/picomatch": "^3.0.0" }
+  "devDependencies": { "@types/picomatch": "^4.0.3" }
 }
