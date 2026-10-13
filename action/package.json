@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "@actions/core": "^3.0.0",
-    "@actions/github": "^6.0.0",
+    "@actions/github": "^9.1.1",
     "interlock-core": "0.1.0"
   },
   "devDependencies": {
